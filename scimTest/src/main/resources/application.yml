@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: scimTest
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://your-okta-domain.okta.com/oauth2/default
+
+scim:
+  downstream:
+    first-server-url: https://apis.keycloak/api  # Keycloak Server Base URL
+    second-server-url: https://duclo.com/api  # Backend Base Url
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Expose all actuator endpoints (in production, only expose the necessary ones)
+  endpoint:
+    health:
+      show-details: "always"
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      firstServer: # Circuit breaker for the first server
+        failureRateThreshold: 50 # Transition to OPEN state if failure rate exceeds 50%
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s # Remain in OPEN state for 5 seconds
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+      secondServer: # Circuit breaker for the second server
+        failureRateThreshold: 50
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5s
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+  retry:
+    instances:
+      serverApiRetry: # Retry configuration
+        maxAttempts: 3 # Maximum 3 retries
+        waitDuration: 2s # Wait 2 seconds before retrying
+        retryExceptions:
+          - org.springframework.web.reactive.function.client.WebClientResponseException
+          - java.net.ConnectException
