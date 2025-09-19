@@ -26,20 +26,21 @@ public class ScimController {
     }
 
     @GetMapping("/Users")
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.OK)
     public Mono<Object> getUser() {
-//        ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
-//        responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
-//        responseDTO.setTotalResults(0);
-//        responseDTO.setStartIndex(1);
-//        responseDTO.setItemsPerPage(0);
-//        responseDTO.setResources(List.of());
+        ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
+        responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
+        responseDTO.setTotalResults(0);
+        responseDTO.setStartIndex(1);
+        responseDTO.setItemsPerPage(0);
+        responseDTO.setResources(List.of());
+        return Mono.just(responseDTO);
 
-        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
-        errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
-        errorResponseDTO.setDetail("No matching resource found");
-        errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
-        return Mono.just(errorResponseDTO);
+//        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
+//        errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
+//        errorResponseDTO.setDetail("No matching resource found");
+//        errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
+//        return Mono.just(errorResponseDTO);
     }
 
 

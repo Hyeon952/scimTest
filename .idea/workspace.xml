@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18a87b79-08f6-4389-8f00-8d71e643b59e" name="Changes" comment="feat : SCIM Integration #1">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Email.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ErrorResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ListResponseDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Meta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Name.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Schemas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/UrnIetfParamsEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/UserResponseDTO.java" afterDir="false" />
+    <list default="true" id="18a87b79-08f6-4389-8f00-8d71e643b59e" name="Changes" comment="feat : SCIM Integration #2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ListResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ListResponseDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +144,7 @@
       <updated>1757851784724</updated>
       <workItem from="1757851787201" duration="678000" />
       <workItem from="1757900273847" duration="3478000" />
-      <workItem from="1758237376389" duration="22112000" />
+      <workItem from="1758237376389" duration="22586000" />
     </task>
     <task id="LOCAL-00001" summary="feat : SCIM Integration #1">
       <option name="closed" value="true" />
@@ -164,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758260664701</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat : SCIM Integration #2">
+      <option name="closed" value="true" />
+      <created>1758272232227</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758272232227</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +181,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat : SCIM Integration #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : SCIM Integration #1" />
+    <MESSAGE value="feat : SCIM Integration #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : SCIM Integration #2" />
   </component>
 </project>
