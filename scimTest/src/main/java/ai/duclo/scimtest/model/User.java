@@ -1,17 +1,21 @@
 package ai.duclo.scimtest.model;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class User {
-    private String id;
+public class User extends Schemas{
     private String userName;
-    @NotBlank
-    private String externalId;
-    private String name;
+    private Name name;
     private List<Email> emails;
+    private String displayName;
+    private String locale;
+    private String externalId;
+    private List<Object> groups;
+    private String password;
+    private boolean active;
 }

@@ -77,7 +77,7 @@ public class ScimService {
                 .transformDeferred(RetryOperator.of(serverApiRetry))
                 .onErrorResume(e -> {
                     log.error("Second server failed, attempting rollback on first server: {}", e.getMessage());
-                    return rollbackFirstServer(firstServerResult.getId())
+                    return rollbackFirstServer(firstServerResult.getUserName())
                             .then(Mono.error(e));
                 });
     }
@@ -118,7 +118,7 @@ public class ScimService {
     private Mono<User> updateSecondServerUser(User firstServerResult) {
         log.debug("Calling second server for user update: {}", firstServerResult.getUserName());
         return secondServerClient.put()
-                .uri("/users/" + firstServerResult.getId())
+                .uri("/users/" + firstServerResult.getUserName())
                 .bodyValue(firstServerResult)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("Second server update failed with status " + response.statusCode())))
@@ -129,7 +129,7 @@ public class ScimService {
                     log.error("Second server update failed, attempting rollback on first server: {}", e.getMessage());
                     // 업데이트 롤백은 복잡할 수 있으므로, 여기서는 간단하게 삭제 로직을 사용합니다.
                     // 실제 운영에서는 '이전 상태로 되돌리는' 별도의 API가 필요합니다.
-                    return rollbackFirstServer(firstServerResult.getId())
+                    return rollbackFirstServer(firstServerResult.getUserName())
                             .then(Mono.error(e));
                 });
     }

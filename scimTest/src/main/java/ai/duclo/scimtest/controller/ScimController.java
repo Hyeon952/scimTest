@@ -1,5 +1,8 @@
 package ai.duclo.scimtest.controller;
 
+import ai.duclo.scimtest.model.ErrorResponseDTO;
+import ai.duclo.scimtest.model.ListResponseDTO;
+import ai.duclo.scimtest.model.UrnIetfParamsEnum;
 import ai.duclo.scimtest.model.User;
 import ai.duclo.scimtest.service.ScimService;
 import lombok.extern.slf4j.Slf4j;
@@ -23,28 +26,33 @@ public class ScimController {
     }
 
     @GetMapping("/Users")
-    @ResponseStatus(HttpStatus.OK)
-    public Mono<Map<String, Object>> getUser() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("schemas", List.of("urn:ietf:params:scim:api:messages:2.0:ListResponse"));
-        response.put("totalResults", 0);
-        response.put("startIndex", 1);
-        response.put("itemsPerPage", 0);
-        response.put("Resources", List.of());
-        return Mono.just(response);
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Mono<Object> getUser() {
+//        ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
+//        responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
+//        responseDTO.setTotalResults(0);
+//        responseDTO.setStartIndex(1);
+//        responseDTO.setItemsPerPage(0);
+//        responseDTO.setResources(List.of());
+
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
+        errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
+        errorResponseDTO.setDetail("No matching resource found");
+        errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
+        return Mono.just(errorResponseDTO);
     }
 
 
     @PostMapping("/Users")
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Void> createUser(@RequestBody Map<String, Object> user) {
+    public Mono<Void> createUser(@RequestBody User user) {
         printObjectFields(user, "User");
 //        return scimService.processUserCreation(user);
         return Mono.empty();
     }
 
     @PutMapping("/Users/{id}")
-    public Mono<Void> updateUser(@PathVariable String id, @RequestBody Map<String, Object> user) {
+    public Mono<Void> updateUser(@PathVariable String id, @RequestBody User user) {
         log.info("Received user update request for ID: {}", id);
         printObjectFields(user, "User");
 //        return scimService.processUserUpdate(id, user);

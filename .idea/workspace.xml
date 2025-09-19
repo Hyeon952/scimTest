@@ -4,22 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18a87b79-08f6-4389-8f00-8d71e643b59e" name="Changes" comment="Changes">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/scimTest.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/config/CorsConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/filter/ApiKeyAuthFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/filter/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/helper/JwtTokenHenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="18a87b79-08f6-4389-8f00-8d71e643b59e" name="Changes" comment="feat : SCIM Integration #1">
+      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ErrorResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/ListResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Meta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Name.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/Schemas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/UrnIetfParamsEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/UserResponseDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimService.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +49,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -155,8 +154,17 @@
       <updated>1757851784724</updated>
       <workItem from="1757851787201" duration="678000" />
       <workItem from="1757900273847" duration="3478000" />
-      <workItem from="1758237376389" duration="14657000" />
+      <workItem from="1758237376389" duration="22112000" />
     </task>
+    <task id="LOCAL-00001" summary="feat : SCIM Integration #1">
+      <option name="closed" value="true" />
+      <created>1758260664701</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758260664701</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,5 +180,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat : SCIM Integration #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : SCIM Integration #1" />
   </component>
 </project>
