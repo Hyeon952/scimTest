@@ -1,6 +1,5 @@
 package ai.duclo.scimtest.model;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

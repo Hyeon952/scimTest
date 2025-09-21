@@ -1,4 +1,4 @@
-package ai.duclo.scimtest.config;
+package ai.duclo.scimtest;
 
 
 import ai.duclo.scimtest.filter.ApiKeyAuthFilter;

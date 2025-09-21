@@ -1,6 +1,5 @@
 package ai.duclo.scimtest.controller;
 
-import ai.duclo.scimtest.model.ErrorResponseDTO;
 import ai.duclo.scimtest.model.ListResponseDTO;
 import ai.duclo.scimtest.model.UrnIetfParamsEnum;
 import ai.duclo.scimtest.model.User;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController
