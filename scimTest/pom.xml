@@ -3,16 +3,27 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>ai.duclo</groupId>
+        <artifactId>backend-parent</artifactId>
+        <version>0.0.4</version>
     </parent>
-    <groupId>ai.duclo</groupId>
+<!--    <parent>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--        <version>3.5.5</version>-->
+<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--    </parent>-->
+<!--    <groupId>ai.duclo</groupId>-->
     <artifactId>scimTest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>scimTest</name>
+    <packaging>war</packaging>
     <description>scimTest</description>
+    <properties>
+        <git.url>https://github.com/Hyeon952/scimTest.git</git.url>
+        <duclo.snapshot.repository.url>https://repository.duclo.net/repository/backend-library-snapshot/</duclo.snapshot.repository.url>
+        <duclo.release.repository.url>https://repository.duclo.net/repository/backend-library/</duclo.release.repository.url>
+    </properties>
     <url/>
     <licenses>
         <license/>
@@ -21,33 +32,44 @@
         <developer/>
     </developers>
     <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
+        <developerConnection>scm:git:https://github.com/Hyeon952/scimTest.git</developerConnection>
+        <url>https://github.com/Hyeon952/scimTest.git</url>
+        <tag>HEAD</tag>
     </scm>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
-    <dependencyManagement>
-        <dependencies>
-            <!-- Resilience4j BOM을 사용하여 모든 모듈의 버전 충돌을 방지합니다. -->
-            <dependency>
-                <groupId>io.github.resilience4j</groupId>
-                <artifactId>resilience4j-bom</artifactId>
-                <version>2.2.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+<!--    <properties>-->
+<!--        <java.version>17</java.version>-->
+<!--    </properties>-->
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            &lt;!&ndash; Resilience4j BOM을 사용하여 모든 모듈의 버전 충돌을 방지합니다. &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>io.github.resilience4j</groupId>-->
+<!--                <artifactId>resilience4j-bom</artifactId>-->
+<!--                <version>1.7.1</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
 
     <dependencies>
-        <!-- Spring Boot Starters -->
+<!--        WEB 제거 WEBFLUX 사용-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+<!--            <scope>provided</scope>-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!-- Spring Boot Starters -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -68,10 +90,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+<!--        기 선언되어 있음 -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Logging -->
         <dependency>
@@ -83,18 +106,22 @@
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>1.7.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-circuitbreaker</artifactId>
+            <version>1.7.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-retry</artifactId>
+            <version>1.7.1</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-reactor</artifactId>
+            <version>1.7.1</version>
         </dependency>
 
         <!-- Java JWT library -->
@@ -124,11 +151,12 @@
         </dependency>
 
         <!-- Test Dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        parent -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -169,4 +197,37 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>duclo-snapshot</id>
+            <url>${duclo.snapshot.repository.url}</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>duclo-release</id>
+            <url>${duclo.release.repository.url}</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

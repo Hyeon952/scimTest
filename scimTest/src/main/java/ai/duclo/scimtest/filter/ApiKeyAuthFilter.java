@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 //@Component
 public class ApiKeyAuthFilter implements WebFilter {
     private static final String API_KEY_HEADER = "X-API-KEY";
-    private final String SAMPLE_SECRET_KEY = "duclo-secret-api-key";    //임시 키
+    private final String SAMPLE_SECRET_KEY = "duclo-secret-api-key";    //TODO 임시 키
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {

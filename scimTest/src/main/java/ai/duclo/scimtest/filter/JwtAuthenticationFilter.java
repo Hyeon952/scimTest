@@ -1,5 +1,6 @@
 package ai.duclo.scimtest.filter;
 
+import ai.duclo.scimtest.model.CustomPrincipal;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class JwtAuthenticationFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String header = exchange.getRequest().getHeaders().getFirst("Authorization");
+
         SecretKey key = Keys.hmacShaKeyFor(SAMPLE_SECRET_KEY.getBytes());
 
         if (StringUtils.hasText(header) && header.startsWith("Bearer ")) {
@@ -38,9 +40,13 @@ public class JwtAuthenticationFilter implements WebFilter {
 
                 String username = claims.getSubject();
                 log.info("username - {}", username);
+                CustomPrincipal customPrincipal = new CustomPrincipal(
+                        username,
+                        claims.get("appId", String.class)
+                );
                 if (username != null) {
                     UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(username, null, null);
+                            new UsernamePasswordAuthenticationToken(customPrincipal, null, null);
 
                     // SecurityContext에 인증 정보 저장
                     return chain.filter(exchange)
@@ -72,5 +78,4 @@ public class JwtAuthenticationFilter implements WebFilter {
         return exchange.getResponse().setComplete();
         */
     }
-
 }

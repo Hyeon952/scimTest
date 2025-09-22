@@ -9,7 +9,7 @@ import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -55,7 +55,7 @@ public class ScimService {
                 .uri("/users")
                 .bodyValue(user)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("First server failed with status " + response.statusCode())))
+                .onStatus(HttpStatus::isError, response -> Mono.error(new RuntimeException("First server failed with status " + response.statusCode())))
                 .bodyToMono(User.class)
                 // Circuitbreaker 적용
                 .transformDeferred(CircuitBreakerOperator.of(firstServerCircuitBreaker))
@@ -69,7 +69,7 @@ public class ScimService {
                 .uri("/users")
                 .bodyValue(firstServerResult)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("Second server failed with status " + response.statusCode())))
+                .onStatus(HttpStatus::isError, response -> Mono.error(new RuntimeException("Second server failed with status " + response.statusCode())))
                 .bodyToMono(User.class)
                 // Circuitbreaker 적용
                 .transformDeferred(CircuitBreakerOperator.of(secondServerCircuitBreaker))
@@ -86,7 +86,7 @@ public class ScimService {
         return firstServerClient.delete()
                 .uri("/users/" + userId)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("Rollback failed!")))
+                .onStatus(HttpStatus::isError, response -> Mono.error(new RuntimeException("Rollback failed!")))
                 .bodyToMono(Void.class)
                 .onErrorResume(e -> {
                     log.error("Failed to rollback first server. Manual intervention may be required.", e);
@@ -109,7 +109,7 @@ public class ScimService {
                 .uri("/users/" + id)
                 .bodyValue(user)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("First server update failed with status " + response.statusCode())))
+                .onStatus(HttpStatus::isError, response -> Mono.error(new RuntimeException("First server update failed with status " + response.statusCode())))
                 .bodyToMono(User.class)
                 .transformDeferred(CircuitBreakerOperator.of(firstServerCircuitBreaker))
                 .transformDeferred(RetryOperator.of(serverApiRetry));
@@ -121,7 +121,7 @@ public class ScimService {
                 .uri("/users/" + firstServerResult.getUserName())
                 .bodyValue(firstServerResult)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> Mono.error(new RuntimeException("Second server update failed with status " + response.statusCode())))
+                .onStatus(HttpStatus::isError, response -> Mono.error(new RuntimeException("Second server update failed with status " + response.statusCode())))
                 .bodyToMono(User.class)
                 .transformDeferred(CircuitBreakerOperator.of(secondServerCircuitBreaker))
                 .transformDeferred(RetryOperator.of(serverApiRetry))
@@ -148,7 +148,7 @@ public class ScimService {
         return firstServerClient.delete()
                 .uri("/users/" + id)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> {
+                .onStatus(HttpStatus::isError, response -> {
                     log.warn("First server deletion failed. This might lead to data inconsistency. Status: {}", response.statusCode());
                     return Mono.error(new RuntimeException("First server deletion failed."));
                 })
@@ -162,7 +162,7 @@ public class ScimService {
         return secondServerClient.delete()
                 .uri("/users/" + id)
                 .retrieve()
-                .onStatus(HttpStatusCode::isError, response -> {
+                .onStatus(HttpStatus::isError, response -> {
                     // 두 번째 서버 실패 시 롤백 로직이 없으므로 경고 로그만 남김
                     log.error("Second server deletion failed. User might still exist in the second system. Status: {}", response.statusCode());
                     return Mono.empty(); // 에러를 발생시키지 않고 빈 스트림으로 종료하여 다음 체인에 영향을 주지 않음

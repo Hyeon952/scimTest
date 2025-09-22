@@ -8,7 +8,45 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://your-okta-domain.okta.com/oauth2/default
+          issuer-uri: https://auth.duclo.net/realms/vms-application-realm
+          jwk-set-uri: https://auth.duclo.net/realms/vms-application-realm/protocol/openid-connect/certs
+  cloud:
+    config:
+      enabled: false
+  main:
+#    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  datasource:
+    device:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: admin
+      url: jdbc:mysql://localhost/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      hikari.maximum-pool-size: 5
+      #maximum idle time for connection in milliseconds
+      hikari.idle-timeout: 60000
+      #maximum number of milliseconds that a client will wait for a connection
+      hikari.connection-timeout: 10000
+      # maximum lifetime in milliseconds of a connection in the pool after it is closed.
+      hikari.max-lifetime: 30000
+      #minimum number of idle connections maintained by HikariCP in a connection pool
+      hikari.minimum-idle: 10
+      hikari.pool-name: HikariDevicePool
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3306/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: init123
+      pool-name: HikariDefaultPool
+
+  jpa:
+    show-sql: true
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+    globally_quoted_identifiers: true
+    naming:
+      strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 security:
   cors:
@@ -53,3 +91,7 @@ resilience4j:
         retryExceptions:
           - org.springframework.web.reactive.function.client.WebClientResponseException
           - java.net.ConnectException
+logging:
+  level:
+    root: INFO
+#    org.springframework.security: DEBUG

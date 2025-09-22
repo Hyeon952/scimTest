@@ -1,4 +1,4 @@
-package ai.duclo.scimtest;
+package ai.duclo.scimtest.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;

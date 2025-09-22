@@ -1,11 +1,12 @@
 package ai.duclo.scimtest.controller;
 
-import ai.duclo.scimtest.model.ListResponseDTO;
-import ai.duclo.scimtest.model.UrnIetfParamsEnum;
-import ai.duclo.scimtest.model.User;
+import ai.duclo.scimtest.model.*;
 import ai.duclo.scimtest.service.ScimService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -15,23 +16,60 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/scim/v1")
+@RequiredArgsConstructor
 public class ScimController {
     private final ScimService scimService;
 
-    public ScimController(ScimService scimService) {
-        this.scimService = scimService;
-    }
+//    public ScimController(ScimService scimService) {
+//        this.scimService = scimService;
+//    }
+
+//    @GetMapping("/Users")
+//    @ResponseStatus(HttpStatus.OK)
+//    public Mono<Object> getUser() {
+//        ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
+//        responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
+//        responseDTO.setTotalResults(0);
+//        responseDTO.setStartIndex(1);
+//        responseDTO.setItemsPerPage(0);
+//        responseDTO.setResources(List.of());
+//        return Mono.just(responseDTO);
+//
+////        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
+////        errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
+////        errorResponseDTO.setDetail("No matching resource found");
+////        errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
+////        return Mono.just(errorResponseDTO);
+//    }
 
     @GetMapping("/Users")
     @ResponseStatus(HttpStatus.OK)
-    public Mono<Object> getUser() {
-        ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
-        responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
-        responseDTO.setTotalResults(0);
-        responseDTO.setStartIndex(1);
-        responseDTO.setItemsPerPage(0);
-        responseDTO.setResources(List.of());
-        return Mono.just(responseDTO);
+    public Mono<ResponseEntity<Object>> getUser(@AuthenticationPrincipal CustomPrincipal principal, @RequestParam(defaultValue = "") String filter, @RequestParam int startIndex, @RequestParam int count) {
+        log.info("cusotmerId: {}, appId: {}", principal.getServiceName(), principal.getAppId());
+        log.info("filter: {}, startIndex: {}, count: {}", filter, startIndex, count);
+        String userName;
+        if( filter == null || !filter.startsWith("userName eq ")) {
+//            return Mono.just(ResponseEntity.badRequest().body("Invalid filter parameter"));
+        } else {
+            userName = filter.substring(12).replaceAll("^\"|\"$", "");
+            log.info("userName: {}", userName);
+        }
+
+//        if(userName.equals("test2@test.com")) {
+//            ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
+//            errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
+//            errorResponseDTO.setDetail("No matching resource found");
+//            errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
+//            return Mono.just(new ResponseEntity<>(errorResponseDTO, HttpStatus.NOT_FOUND));
+//        } else {
+            ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
+            responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
+            responseDTO.setTotalResults(0);
+            responseDTO.setStartIndex(startIndex);
+            responseDTO.setItemsPerPage(0);
+            responseDTO.setResources(List.of());
+            return Mono.just(ResponseEntity.ok(responseDTO));
+//        }
 
 //        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO();
 //        errorResponseDTO.setStatus(HttpStatus.NOT_FOUND.value());
@@ -42,11 +80,11 @@ public class ScimController {
 
 
     @PostMapping("/Users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Void> createUser(@RequestBody User user) {
+    public Mono<ResponseEntity<Object>> createUser(@AuthenticationPrincipal CustomPrincipal principal, @RequestBody User user) {
+        log.info("cusotmerId: {}, appId: {}", principal.getServiceName(), principal.getAppId());
         printObjectFields(user, "User");
 //        return scimService.processUserCreation(user);
-        return Mono.empty();
+        return Mono.just(new ResponseEntity<>(UserResponseDTO.create(user), HttpStatus.CREATED));
     }
 
     @PutMapping("/Users/{id}")

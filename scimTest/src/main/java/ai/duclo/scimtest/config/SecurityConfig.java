@@ -1,4 +1,4 @@
-package ai.duclo.scimtest;
+package ai.duclo.scimtest.config;
 
 
 import ai.duclo.scimtest.filter.ApiKeyAuthFilter;
@@ -25,7 +25,7 @@ public class SecurityConfig {
 
     @Bean
     @Order(1)
-    public SecurityWebFilterChain apiKeyFilterChain(ServerHttpSecurity http) throws Exception {
+    public SecurityWebFilterChain apiKeyFilterChain(ServerHttpSecurity http) {
         return http
                 .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/api/v1/internal/**"))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
@@ -43,7 +43,7 @@ public class SecurityConfig {
 
     @Bean
     @Order(2)
-    SecurityWebFilterChain jwtSecurityFilterChain(ServerHttpSecurity http) throws Exception {
+    SecurityWebFilterChain jwtApiSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .cors(cors -> {})

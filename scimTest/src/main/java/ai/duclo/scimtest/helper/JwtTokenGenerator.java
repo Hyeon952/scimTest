@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class JwtTokenHenerator {
+public class JwtTokenGenerator {
 
     //TODO 임시 키
     private final String SAMPLE_SECRET_KEY = "5eR$9kL#7tF@2zQwP8dS&6uV!3mH*1xYb";
@@ -64,7 +64,7 @@ public class JwtTokenHenerator {
 
 
     public static void main(String[] args) {
-        JwtTokenHenerator tokenGenerator = new JwtTokenHenerator();
+        JwtTokenGenerator tokenGenerator = new JwtTokenGenerator();
 
         // 여러 클레임 예시
         Map<String, Object> claims = new HashMap<>();
@@ -72,7 +72,7 @@ public class JwtTokenHenerator {
         claims.put("email", "example@domain.com");
         claims.put("loginTime", System.currentTimeMillis());
 
-        String token = tokenGenerator.generateToken("appId", 31536000000L, claims); // 1 hour expiration
+        String token = tokenGenerator.generateToken("OktaToken", 31536000000L, claims); // 1 hour expiration
         System.out.println("Generated JWT Token: " + token);
     }
 
