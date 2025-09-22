@@ -20,8 +20,8 @@ spring:
     device:
       driver-class-name: com.mysql.cj.jdbc.Driver
       username: root
-      password: admin
-      url: jdbc:mysql://localhost/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      password: init123
+      url: jdbc:mysql://localhost:3306/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
       hikari.maximum-pool-size: 5
       #maximum idle time for connection in milliseconds
       hikari.idle-timeout: 60000
@@ -32,12 +32,17 @@ spring:
       #minimum number of idle connections maintained by HikariCP in a connection pool
       hikari.minimum-idle: 10
       hikari.pool-name: HikariDevicePool
-    hikari:
-      jdbc-url: jdbc:mysql://localhost:3306/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      username: root
-      password: init123
-      pool-name: HikariDefaultPool
+#    hikari:
+#      jdbc-url: jdbc:mysql://localhost:3306/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      username: root
+#      password: init123
+#      pool-name: HikariDefaultPool
+#    url: jdbc:mysql://localhost:3306/device_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: init123
+
 
   jpa:
     show-sql: true

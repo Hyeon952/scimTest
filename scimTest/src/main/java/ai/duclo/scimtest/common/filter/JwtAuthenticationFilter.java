@@ -1,6 +1,6 @@
-package ai.duclo.scimtest.filter;
+package ai.duclo.scimtest.common.filter;
 
-import ai.duclo.scimtest.model.CustomPrincipal;
+import ai.duclo.scimtest.common.model.CustomPrincipal;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;

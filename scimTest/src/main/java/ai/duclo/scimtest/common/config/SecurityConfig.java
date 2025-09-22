@@ -1,8 +1,8 @@
-package ai.duclo.scimtest.config;
+package ai.duclo.scimtest.common.config;
 
 
-import ai.duclo.scimtest.filter.ApiKeyAuthFilter;
-import ai.duclo.scimtest.filter.JwtAuthenticationFilter;
+import ai.duclo.scimtest.common.filter.ApiKeyAuthFilter;
+import ai.duclo.scimtest.common.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

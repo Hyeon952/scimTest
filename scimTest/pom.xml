@@ -39,13 +39,14 @@
 <!--    <properties>-->
 <!--        <java.version>17</java.version>-->
 <!--    </properties>-->
+
 <!--    <dependencyManagement>-->
 <!--        <dependencies>-->
 <!--            &lt;!&ndash; Resilience4j BOM을 사용하여 모든 모듈의 버전 충돌을 방지합니다. &ndash;&gt;-->
 <!--            <dependency>-->
 <!--                <groupId>io.github.resilience4j</groupId>-->
 <!--                <artifactId>resilience4j-bom</artifactId>-->
-<!--                <version>1.7.1</version>-->
+<!--                <version>2.2.0</version>-->
 <!--                <type>pom</type>-->
 <!--                <scope>import</scope>-->
 <!--            </dependency>-->
@@ -148,6 +149,22 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <!-- Database -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>5.6.8.Final</version>
+            <!-- Must match hibernate-core -->
         </dependency>
 
         <!-- Test Dependencies -->

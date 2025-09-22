@@ -1,4 +1,4 @@
-package ai.duclo.scimtest.helper;
+package ai.duclo.scimtest.common.helper;
 
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;

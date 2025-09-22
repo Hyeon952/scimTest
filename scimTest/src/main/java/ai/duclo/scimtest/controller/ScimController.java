@@ -1,5 +1,6 @@
 package ai.duclo.scimtest.controller;
 
+import ai.duclo.scimtest.common.model.CustomPrincipal;
 import ai.duclo.scimtest.model.*;
 import ai.duclo.scimtest.service.ScimService;
 import lombok.RequiredArgsConstructor;

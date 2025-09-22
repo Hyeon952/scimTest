@@ -1,4 +1,4 @@
-package ai.duclo.scimtest.filter;
+package ai.duclo.scimtest.common.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
