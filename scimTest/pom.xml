@@ -166,6 +166,11 @@
             <version>5.6.8.Final</version>
             <!-- Must match hibernate-core -->
         </dependency>
+        <!-- liquibase db version management -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
 
         <!-- Test Dependencies -->
 <!--        parent -->

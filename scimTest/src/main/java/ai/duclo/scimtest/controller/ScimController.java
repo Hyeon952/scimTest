@@ -1,7 +1,10 @@
 package ai.duclo.scimtest.controller;
 
 import ai.duclo.scimtest.common.model.CustomPrincipal;
-import ai.duclo.scimtest.model.*;
+import ai.duclo.scimtest.model.scim.ListResponseDTO;
+import ai.duclo.scimtest.model.scim.UrnIetfParamsEnum;
+import ai.duclo.scimtest.model.scim.User;
+import ai.duclo.scimtest.model.scim.UserResponseDTO;
 import ai.duclo.scimtest.service.ScimService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

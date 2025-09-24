@@ -42,6 +42,7 @@ public class JwtAuthenticationFilter implements WebFilter {
                 log.info("username - {}", username);
                 CustomPrincipal customPrincipal = new CustomPrincipal(
                         username,
+                        claims.get("jti", String.class),
                         claims.get("appId", String.class)
                 );
                 if (username != null) {

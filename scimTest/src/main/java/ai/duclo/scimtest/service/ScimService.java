@@ -1,6 +1,6 @@
 package ai.duclo.scimtest.service;
 
-import ai.duclo.scimtest.model.User;
+import ai.duclo.scimtest.model.scim.User;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.reactor.circuitbreaker.operator.CircuitBreakerOperator;

@@ -1,4 +1,4 @@
-package ai.duclo.scimtest.model;
+package ai.duclo.scimtest.model.scim;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -27,15 +27,15 @@ public class SecurityConfig {
     @Order(1)
     public SecurityWebFilterChain apiKeyFilterChain(ServerHttpSecurity http) {
         return http
-                .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/api/v1/internal/**"))
+                .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/internal/v1/**"))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .cors(cors -> {})
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
 //                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 //                .addFilterAt(apiKeyAuthFilter, SecurityWebFiltersOrder.AUTHENTICATION)
-                .addFilterAt(new ApiKeyAuthFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
+//                .addFilterAt(new ApiKeyAuthFilter(), SecurityWebFiltersOrder.AUTHENTICATION)
                 .authorizeExchange(authz -> authz
-                        .pathMatchers("/api/v1/internal/**").authenticated()
+//                        .pathMatchers("/api/v1/internal/**").authenticated()
                         .anyExchange().permitAll()
                 )
                 .build();

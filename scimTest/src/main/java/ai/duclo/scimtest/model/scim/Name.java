@@ -1,4 +1,4 @@
-package ai.duclo.scimtest.model;
+package ai.duclo.scimtest.model.scim;
 
 import lombok.Data;
 
