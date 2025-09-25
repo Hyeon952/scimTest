@@ -10,6 +10,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 
 public class JwtTokenGenerator {
@@ -68,8 +69,8 @@ public class JwtTokenGenerator {
 
         // 여러 클레임 예시
         Map<String, Object> claims = new HashMap<>();
-        claims.put("appId", "testAppId");
-        claims.put("email", "example@domain.com");
+        claims.put("appId", "oktatestAppId");
+        claims.put("jti", UUID.randomUUID().toString());
         claims.put("loginTime", System.currentTimeMillis());
 
         String token = tokenGenerator.generateToken("OktaToken", 31536000000L, claims); // 1 hour expiration

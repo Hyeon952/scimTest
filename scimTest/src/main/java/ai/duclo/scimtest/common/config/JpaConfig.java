@@ -40,7 +40,7 @@ public class JpaConfig {
         jpaProperties.put("hibernate.dialect",
                 "org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect");
         return builder.dataSource(dataSource)
-                .packages(DeviceDBConstants.JPA_DEVICE_BASE_PACKAGE)
+                .packages(DeviceDBConstants.JPA_DEVICE_ENTITY_BASE_PACKAGE)
                 .properties(jpaProperties).build();
     }
 

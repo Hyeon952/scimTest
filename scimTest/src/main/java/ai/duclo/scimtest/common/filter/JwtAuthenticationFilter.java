@@ -38,14 +38,14 @@ public class JwtAuthenticationFilter implements WebFilter {
                         .parseSignedClaims(token)
                         .getPayload();
 
-                String username = claims.getSubject();
-                log.info("username - {}", username);
+                String subject = claims.getSubject();
+                log.info("subject - {}", subject);
                 CustomPrincipal customPrincipal = new CustomPrincipal(
-                        username,
+                        subject,
                         claims.get("jti", String.class),
                         claims.get("appId", String.class)
                 );
-                if (username != null) {
+                if (subject != null) {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(customPrincipal, null, null);
 

@@ -19,7 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/scim/v1")
+@RequestMapping("/scim/v2")
 @RequiredArgsConstructor
 public class ScimController {
     private final ScimService scimService;
@@ -66,6 +66,8 @@ public class ScimController {
 //            errorResponseDTO.setSchemas(List.of(UrnIetfParamsEnum.ERROR.getValue()));
 //            return Mono.just(new ResponseEntity<>(errorResponseDTO, HttpStatus.NOT_FOUND));
 //        } else {
+
+            //Blank Response
             ListResponseDTO<User> responseDTO = new ListResponseDTO<>();
             responseDTO.setSchemas(List.of(UrnIetfParamsEnum.LIST_RESPONSE.getValue()));
             responseDTO.setTotalResults(0);

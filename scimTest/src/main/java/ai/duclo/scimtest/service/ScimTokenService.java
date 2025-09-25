@@ -1,16 +1,21 @@
 package ai.duclo.scimtest.service;
 
 import ai.duclo.scimtest.common.helper.JwtTokenGenerator;
+import ai.duclo.scimtest.dao.ScimDAO;
 import ai.duclo.scimtest.model.internal.InternalResponseDTO;
 import ai.duclo.scimtest.model.internal.InternalResponseMeta;
 import ai.duclo.scimtest.model.internal.InternalScimToken;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
+@RequiredArgsConstructor
 public class ScimTokenService {
+
+    private final ScimDAO scimDAO;
 
     public InternalResponseDTO createScimToken(String appType, String idpId) {
 
@@ -20,7 +25,7 @@ public class ScimTokenService {
         // 여러 클레임 예시
         Map<String, Object> claims = new HashMap<>();
         claims.put("idpId", idpId);
-        claims.put("JTI", jti);
+        claims.put("jti", jti);
 
         String token = tokenGenerator.generateToken(appType, 31536000000L, claims); // 1 hour expiration
         InternalResponseDTO internalResponseDTO = new InternalResponseDTO();
@@ -30,6 +35,8 @@ public class ScimTokenService {
         internalScimToken.setScimToken(token);
         internalResponseDTO.setMeta(responseMeta);
         internalResponseDTO.setData(internalScimToken);
+
+        scimDAO.saveScimToken(idpId, jti);
 
         return internalResponseDTO;
     }

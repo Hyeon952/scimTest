@@ -6,5 +6,6 @@ public class DeviceDBConstants {
     public static final String DEVICE_DATA_SOURCE = "deviceDataSource";
     public static final String SPRING_DATASOURCE_DEVICE = "spring.datasource.device";
     public static final String SPRING_DATASOURCE_DEVICE_HIKARI = "spring.datasource.device.hikari";
-    public static final String JPA_DEVICE_BASE_PACKAGE = "ai.duclo.scimtest.entity";
+    public static final String JPA_DEVICE_BASE_PACKAGE = "ai.duclo.scimtest.dao";
+    public static final String JPA_DEVICE_ENTITY_BASE_PACKAGE = "ai.duclo.scimtest.entity";
 }
