@@ -61,8 +61,9 @@ security:
 
 scim:
   downstream:
-    first-server-url: https://apis.keycloak/api  # Keycloak Server Base URL
-    second-server-url: https://duclo.com/api  # Backend Base Url
+    first-server-url: https://auth.sandbox.platform.hanwhavision.cloud # Keycloak Server Base URL
+    second-server-url: http://localhost:8093  # Backend Base Url
+#    second-server-url: https://api.sandbox.platform.hanwhavision.cloud/partner  # Backend Base Url
 
 management:
   endpoints:

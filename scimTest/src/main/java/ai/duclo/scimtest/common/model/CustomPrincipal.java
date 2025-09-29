@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public class CustomPrincipal {
-    private final String serviceName;
-    private final String jti;
-    private final String appId;
+    private String subject;
+    private String jti;
+    private String idpId;
 
-    public CustomPrincipal(String serviceName, String jti, String appId) {
-        this.serviceName = serviceName;
+    public CustomPrincipal(String subject, String jti, String idpId) {
+        this.subject = subject;
         this.jti = jti;
-        this.appId = appId;
+        this.idpId = idpId;
     }
 }

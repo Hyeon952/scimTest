@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter implements WebFilter {
                 CustomPrincipal customPrincipal = new CustomPrincipal(
                         subject,
                         claims.get("jti", String.class),
-                        claims.get("appId", String.class)
+                        claims.get("idpId", String.class)
                 );
                 if (subject != null) {
                     UsernamePasswordAuthenticationToken authentication =

@@ -4,7 +4,6 @@ import ai.duclo.scimtest.common.model.CustomPrincipal;
 import ai.duclo.scimtest.model.scim.ListResponseDTO;
 import ai.duclo.scimtest.model.scim.UrnIetfParamsEnum;
 import ai.duclo.scimtest.model.scim.User;
-import ai.duclo.scimtest.model.scim.UserResponseDTO;
 import ai.duclo.scimtest.service.ScimService;
 import java.lang.reflect.Field;
 import java.util.List;
@@ -48,7 +47,7 @@ public class ScimController {
     @GetMapping("/Users")
     @ResponseStatus(HttpStatus.OK)
     public Mono<ResponseEntity<Object>> getUser(@AuthenticationPrincipal CustomPrincipal principal, @RequestParam(defaultValue = "") String filter, @RequestParam int startIndex, @RequestParam int count) {
-        log.info("cusotmerId: {}, appId: {}", principal.getServiceName(), principal.getAppId());
+        log.info("cusotmerId: {}, idpId: {}", principal.getSubject(), principal.getIdpId());
         log.info("filter: {}, startIndex: {}, count: {}", filter, startIndex, count);
         String userName;
         if( filter == null || !filter.startsWith("userName eq ")) {
@@ -86,10 +85,14 @@ public class ScimController {
 
     @PostMapping("/Users")
     public Mono<ResponseEntity<Object>> createUser(@AuthenticationPrincipal CustomPrincipal principal, @RequestBody User user) {
-        log.info("cusotmerId: {}, appId: {}", principal.getServiceName(), principal.getAppId());
+        log.info("cusotmerId: {}, idpId: {}", principal.getSubject(), principal.getIdpId());
         printObjectFields(user, "User");
-//        return scimService.processUserCreation(user);
-        return Mono.just(new ResponseEntity<>(UserResponseDTO.create(user), HttpStatus.CREATED));
+//        return scimService.processUserCreation(user, principal.getIdpId());
+        try {
+            return Mono.just(new ResponseEntity<>(scimService.processUserCreation(user, principal.getIdpId()), HttpStatus.CREATED));
+        } catch (Exception e) {
+            return Mono.just(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+        }
     }
 
     @PutMapping("/Users/{id}")

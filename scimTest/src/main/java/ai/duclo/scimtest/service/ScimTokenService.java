@@ -21,7 +21,7 @@ public class ScimTokenService {
         JwtTokenGenerator tokenGenerator = new JwtTokenGenerator();
 
         String jti = java.util.UUID.randomUUID().toString();
-        // 여러 클레임 예시
+
         Map<String, Object> claims = new HashMap<>();
         claims.put("idpId", idpId);
         claims.put("jti", jti);

@@ -67,7 +67,7 @@ public class JwtTokenGenerator {
 
         // 여러 클레임 예시
         Map<String, Object> claims = new HashMap<>();
-        claims.put("appId", "oktatestAppId");
+        claims.put("idpId", "oktatestAppId");
         claims.put("jti", UUID.randomUUID().toString());
         claims.put("loginTime", System.currentTimeMillis());
 
