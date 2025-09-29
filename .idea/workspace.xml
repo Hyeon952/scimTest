@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a43c153-9fd1-432d-8fff-23cf238e18b1" name="변경" comment="reafact : 임시 Commit">
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/DateTimeUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/ScimDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/ScimDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/repository/IdpScimTokenRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/repository/RevokedScimTokenRepository.java" afterDir="false" />
+    <list default="true" id="6a43c153-9fd1-432d-8fff-23cf238e18b1" name="변경" comment="feat : scim token 관리 JPA 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/JwtTokenGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/JwtTokenGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/model/DeviceDBConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/model/DeviceDBConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/IdpScimToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/IdpScimToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,22 +26,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Hyeon952"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Hyeon952&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Hyeon952/scimTest.git",
-    "accountId": "124b221a-d49f-4653-aa69-118c5c0a3e3e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Hyeon952/scimTest.git&quot;,
+    &quot;accountId&quot;: &quot;124b221a-d49f-4653-aa69-118c5c0a3e3e&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -64,48 +55,53 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="331wsrvjvmu3ZqWuDl9tvhWacrI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP 요청.ScimTestApplication | #1.executor": "Run",
-    "Maven.scimTest [org.apache.maven.plugins:maven-clean-plugin:3.1.0:clean].executor": "Run",
-    "Maven.scimTest [org.apache.maven.plugins:maven-install-plugin:2.5.2:install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ScimTestApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "아티팩트",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.JwtTokenHenerator.executor": "Run",
-    "애플리케이션.ai.duclo.scimtest.common.helper.JwtTokenGenerator.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP 요청.ScimTestApplication | #1.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scimTest [org.apache.maven.plugins:maven-clean-plugin:3.1.0:clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.scimTest [org.apache.maven.plugins:maven-install-plugin:2.5.2:install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ScimTestApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.JwtTokenHenerator.executor&quot;: &quot;Run&quot;,
+    &quot;애플리케이션.ai.duclo.scimtest.common.helper.JwtTokenGenerator.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\test\scimTest\scimTest\src\test\java\ai\duclo\scimtest\service" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
@@ -211,7 +207,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758498096104</updated>
-      <workItem from="1758498097753" duration="49485000" />
+      <workItem from="1758498097753" duration="52871000" />
+      <workItem from="1759110243219" duration="359000" />
     </task>
     <task id="LOCAL-00001" summary="feat : parent만 추가(shared, mysql-shared) 미사용">
       <option name="closed" value="true" />
@@ -237,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758686641415</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat : scim token 관리 JPA 추가">
+      <option name="closed" value="true" />
+      <created>1758791242446</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758791242446</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,6 +263,7 @@
     <MESSAGE value="feat : parent만 추가(shared, mysql-shared) 미사용" />
     <MESSAGE value="reafact : JPA 추가(DeviceDB)" />
     <MESSAGE value="reafact : 임시 Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="reafact : 임시 Commit" />
+    <MESSAGE value="feat : scim token 관리 JPA 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : scim token 관리 JPA 추가" />
   </component>
 </project>
