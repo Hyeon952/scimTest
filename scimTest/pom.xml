@@ -17,7 +17,7 @@
     <artifactId>scimTest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>scimTest</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>scimTest</description>
     <properties>
         <git.url>https://github.com/Hyeon952/scimTest.git</git.url>
