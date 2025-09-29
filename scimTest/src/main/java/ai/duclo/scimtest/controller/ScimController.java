@@ -6,6 +6,8 @@ import ai.duclo.scimtest.model.scim.UrnIetfParamsEnum;
 import ai.duclo.scimtest.model.scim.User;
 import ai.duclo.scimtest.model.scim.UserResponseDTO;
 import ai.duclo.scimtest.service.ScimService;
+import java.lang.reflect.Field;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,9 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
-
-import java.lang.reflect.Field;
-import java.util.List;
 
 @Slf4j
 @RestController

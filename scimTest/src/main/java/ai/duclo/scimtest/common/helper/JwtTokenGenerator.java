@@ -3,15 +3,13 @@ package ai.duclo.scimtest.common.helper;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
+import javax.crypto.spec.SecretKeySpec;
 
 public class JwtTokenGenerator {
 

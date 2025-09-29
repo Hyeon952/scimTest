@@ -3,6 +3,7 @@ package ai.duclo.scimtest.common.filter;
 import ai.duclo.scimtest.common.model.CustomPrincipal;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import javax.crypto.SecretKey;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -13,8 +14,6 @@ import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
-
-import javax.crypto.SecretKey;
 
 @Slf4j
 //@Component

@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-
 @Slf4j
 @RestController
 @RequestMapping("/internal/v1")
@@ -18,7 +17,7 @@ public class ScimTokenController {
 
     private final ScimTokenService scimTokenService;
 
-    @PostMapping("/{appType}/scimToken")
+    @PostMapping("/{appType}/scim/token")
     public ResponseEntity<InternalResponseDTO> getScimToken(@PathVariable(name = "appType") String appType, @RequestBody InternalScimTokenRequestDTO internalScimTokenRequestDTO) {
         if(!StringUtils.hasText(internalScimTokenRequestDTO.getIdpId())){
             return ResponseEntity.badRequest().build();

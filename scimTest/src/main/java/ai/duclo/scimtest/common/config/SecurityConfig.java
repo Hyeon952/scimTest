@@ -1,6 +1,5 @@
 package ai.duclo.scimtest.common.config;
 
-
 import ai.duclo.scimtest.common.filter.ApiKeyAuthFilter;
 import ai.duclo.scimtest.common.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,6 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
 import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
-
 
 @Configuration
 @EnableWebFluxSecurity

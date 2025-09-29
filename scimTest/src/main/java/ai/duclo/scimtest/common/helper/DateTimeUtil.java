@@ -1,12 +1,11 @@
 package ai.duclo.scimtest.common.helper;
 
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
-
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component
 public class DateTimeUtil {

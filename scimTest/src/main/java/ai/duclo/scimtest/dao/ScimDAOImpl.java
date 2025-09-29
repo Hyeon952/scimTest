@@ -7,7 +7,6 @@ import ai.duclo.scimtest.entity.IdpScimToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 @RequiredArgsConstructor
 public class ScimDAOImpl implements ScimDAO {

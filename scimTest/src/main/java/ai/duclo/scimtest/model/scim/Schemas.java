@@ -1,8 +1,7 @@
 package ai.duclo.scimtest.model.scim;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class Schemas {

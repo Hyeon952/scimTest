@@ -5,11 +5,10 @@ import ai.duclo.scimtest.dao.ScimDAO;
 import ai.duclo.scimtest.model.internal.InternalResponseDTO;
 import ai.duclo.scimtest.model.internal.InternalResponseMeta;
 import ai.duclo.scimtest.model.internal.InternalScimToken;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor

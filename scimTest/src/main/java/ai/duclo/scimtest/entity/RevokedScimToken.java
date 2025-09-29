@@ -1,9 +1,8 @@
 package ai.duclo.scimtest.entity;
 
-import lombok.Data;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.*;
+import lombok.Data;
 
 @Data
 @Entity
