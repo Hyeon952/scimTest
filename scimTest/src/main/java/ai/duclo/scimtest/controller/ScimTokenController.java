@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/internal/v1")
+@RequestMapping("/scim/internal")
 @RequiredArgsConstructor
 public class ScimTokenController {
 
     private final ScimTokenService scimTokenService;
 
-    @PostMapping("/{appType}/scim/token")
+    @PostMapping("/v1/{appType}/token")
     public ResponseEntity<InternalResponseDTO> getScimToken(@PathVariable(name = "appType") String appType, @RequestBody InternalScimTokenRequestDTO internalScimTokenRequestDTO) {
         if(!StringUtils.hasText(internalScimTokenRequestDTO.getIdpId())){
             return ResponseEntity.badRequest().build();

@@ -4,29 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a43c153-9fd1-432d-8fff-23cf238e18b1" name="변경" comment="refact : packaging jar 변경">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="6a43c153-9fd1-432d-8fff-23cf238e18b1" name="변경" comment="feat : Healthcheck 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/JpaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/JpaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/LiquibaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/LiquibaseConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/ApiKeyAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/ApiKeyAuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/filter/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/DateTimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/DateTimeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/JwtTokenGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/common/helper/JwtTokenGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/HealthCheckController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/HealthCheckController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimTokenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/controller/ScimTokenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/ScimDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/dao/ScimDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/IdpScimToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/IdpScimToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/RevokedScimToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/entity/RevokedScimToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/ListResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/ListResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/Schemas.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/Schemas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/model/scim/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/java/ai/duclo/scimtest/service/ScimTokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/main/resources/db/db-scim.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/main/resources/db/db-scim.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/scimTest/src/test/java/ai/duclo/scimtest/service/ScimServiceIntegrationTest2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +191,7 @@
       <option name="presentableId" value="Default" />
       <updated>1758498096104</updated>
       <workItem from="1758498097753" duration="49485000" />
-      <workItem from="1759118876771" duration="353000" />
+      <workItem from="1759118876771" duration="1777000" />
     </task>
     <task id="LOCAL-00001" summary="feat : parent만 추가(shared, mysql-shared) 미사용">
       <option name="closed" value="true" />
@@ -243,7 +225,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759113653648</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="chore : pom 수정">
+      <option name="closed" value="true" />
+      <created>1759119271277</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759119271277</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat : Healthcheck 추가">
+      <option name="closed" value="true" />
+      <created>1759119710857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759119710857</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +263,8 @@
     <MESSAGE value="reafact : JPA 추가(DeviceDB)" />
     <MESSAGE value="reafact : 임시 Commit" />
     <MESSAGE value="refact : packaging jar 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="refact : packaging jar 변경" />
+    <MESSAGE value="chore : pom 수정" />
+    <MESSAGE value="feat : Healthcheck 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : Healthcheck 추가" />
   </component>
 </project>

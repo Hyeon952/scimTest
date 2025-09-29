@@ -25,7 +25,7 @@ public class SecurityConfig {
     @Order(1)
     public SecurityWebFilterChain apiKeyFilterChain(ServerHttpSecurity http) {
         return http
-                .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/internal/v1/**"))
+                .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/scim/internal/v1/**"))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .cors(cors -> {})
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
@@ -49,8 +49,8 @@ public class SecurityConfig {
 //                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeExchange(authz -> authz
                         .pathMatchers(
-                                "/",
-                                "/health",
+                                "/scim/",
+                                "/scim/health",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html",
