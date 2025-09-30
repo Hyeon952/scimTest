@@ -65,9 +65,11 @@ public class JwtTokenGenerator {
     public static void main(String[] args) {
         JwtTokenGenerator tokenGenerator = new JwtTokenGenerator();
 
+        String uuid = UUID.randomUUID().toString();
+        System.out.println(uuid);
         // 여러 클레임 예시
         Map<String, Object> claims = new HashMap<>();
-        claims.put("idpId", "oktatestAppId");
+        claims.put("idpId", uuid);
         claims.put("jti", UUID.randomUUID().toString());
         claims.put("loginTime", System.currentTimeMillis());
 

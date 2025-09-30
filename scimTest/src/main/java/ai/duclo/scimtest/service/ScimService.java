@@ -2,6 +2,7 @@ package ai.duclo.scimtest.service;
 
 import ai.duclo.scimtest.model.internal.AccountRequestV2;
 import ai.duclo.scimtest.model.scim.User;
+import ai.duclo.scimtest.model.scim.UserResponseDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
@@ -55,18 +56,23 @@ public class ScimService {
     public User processUserCreation(User user, String idpId) throws Exception {
         log.info("Starting user creation process for user: {}, idpId : {}", user.getUserName(), idpId);
         try {
-            return createSecondServerUser(AccountRequestV2.of(user), idpId);
+             if(createSecondServerUser(AccountRequestV2.of(user), idpId)){
+                 log.info("User creation successful for user: {}", user.getUserName());
+                 return UserResponseDTO.create(user);
+             } else {
+                 throw new RuntimeException("Second server user creation failed.");
+             }
         } catch (Exception e) {
             log.error("User creation failed, full stack trace: {}", e.getMessage(), e);
             throw e;
         }
     }
 
-    public User createFirstServerUser(User user) throws Exception {
+    public Boolean createFirstServerUser(User user) throws Exception {
         log.info("Calling first server for user: {}", user.getUserName());
         HttpPost post = new HttpPost(firstServerUrl + "/users");
         post.setEntity(new StringEntity(objectMapper.writeValueAsString(AccountRequestV2.of(user)), ContentType.APPLICATION_JSON));
-        return firstServerClient.execute(post, (ResponseHandler<User>) response -> {
+        return firstServerClient.execute(post, response -> {
             try {
                 return handleUserResponse(response);
             } catch (Exception e) {
@@ -75,11 +81,11 @@ public class ScimService {
         });
     }
 
-    public User createSecondServerUser(AccountRequestV2 accountRequestV2, String idpId) throws Exception {
+    public Boolean createSecondServerUser(AccountRequestV2 accountRequestV2, String idpId) throws Exception {
         log.info("Calling second server for user: {}, {}", accountRequestV2.getUserName(), idpId);
         HttpPost post = new HttpPost(secondServerUrl + "/partner/internal/scim/" + idpId + "/accounts");
         post.setEntity(new StringEntity(objectMapper.writeValueAsString(accountRequestV2), ContentType.APPLICATION_JSON));
-        return secondServerClient.execute(post, (ResponseHandler<User>) response -> {
+        return secondServerClient.execute(post, response -> {
             try {
                 return handleUserResponse(response);
             } catch (Exception e) {
@@ -105,17 +111,21 @@ public class ScimService {
         }
     }
 
-    public User processUserUpdate(String id, User user) throws Exception {
+    public Boolean processUserUpdate(String id, User user) throws Exception {
         log.info("Starting user update process for user id: {}", id);
-        User updatedUser = updateFirstServerUser(id, user);
-        return updateSecondServerUser(updatedUser);
+        Boolean updatedUser = updateFirstServerUser(id, user);
+        if(updatedUser) {
+            return updateSecondServerUser(user);
+        } else {
+            throw new RuntimeException("First server update failed.");
+        }
     }
 
-    public User updateFirstServerUser(String id, User user) throws Exception {
+    public Boolean updateFirstServerUser(String id, User user) throws Exception {
         log.debug("Calling first server for user update id: {}", id);
         HttpPut put = new HttpPut(firstServerUrl + "/users/" + id);
         put.setEntity(new StringEntity(objectMapper.writeValueAsString(user), ContentType.APPLICATION_JSON));
-        return firstServerClient.execute(put, (ResponseHandler<User>) response -> {
+        return firstServerClient.execute(put, response -> {
             try {
                 return handleUserResponse(response);
             } catch (Exception e) {
@@ -124,12 +134,12 @@ public class ScimService {
         });
     }
 
-    public User updateSecondServerUser(User firstServerResult) throws Exception {
+    public Boolean updateSecondServerUser(User firstServerResult) throws Exception {
         log.debug("Calling second server for user update: {}", firstServerResult.getUserName());
         HttpPut put = new HttpPut(secondServerUrl + "/users/" + firstServerResult.getUserName());
         put.setEntity(new StringEntity(objectMapper.writeValueAsString(firstServerResult), ContentType.APPLICATION_JSON));
         try {
-            return secondServerClient.execute(put, (ResponseHandler<User>) response -> {
+            return secondServerClient.execute(put, response -> {
                 try {
                     return handleUserResponse(response);
                 } catch (Exception e) {
@@ -177,12 +187,17 @@ public class ScimService {
     }
 
     // HTTP 응답에서 User 객체 파싱
-    private User handleUserResponse(HttpResponse response) throws Exception {
-        int status = response.getStatusLine().getStatusCode();;
-        if (status >= 400) {
+    private Boolean handleUserResponse(HttpResponse response) throws Exception {
+        int status = response.getStatusLine().getStatusCode();
+        log.info("Response status: {}", status);
+        if(status >= 200 && status < 300) {
+        	return true;
+        } else if (status >= 400) {
             throw new RuntimeException("Server failed with status " + status);
+        } else {
+            throw new RuntimeException("Unexpected response status: " + status);
         }
-        return objectMapper.readValue(response.getEntity().getContent(), User.class);
+//        return objectMapper.readValue(response.getEntity().getContent(), User.class);
     }
 
 //    public User processUserCreation(User user, String idpId) throws Exception {
