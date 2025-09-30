@@ -1,6 +1,7 @@
 package ai.duclo.scimtest.service;
 
 import ai.duclo.scimtest.model.internal.AccountRequestV2;
+import ai.duclo.scimtest.model.internal.ScimAccountRequest;
 import ai.duclo.scimtest.model.scim.User;
 import ai.duclo.scimtest.model.scim.UserResponseDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -56,7 +57,7 @@ public class ScimService {
     public User processUserCreation(User user, String idpId) throws Exception {
         log.info("Starting user creation process for user: {}, idpId : {}", user.getUserName(), idpId);
         try {
-             if(createSecondServerUser(AccountRequestV2.of(user), idpId)){
+             if(createSecondServerUser(ScimAccountRequest.of(user), idpId)){
                  log.info("User creation successful for user: {}", user.getUserName());
                  return UserResponseDTO.create(user);
              } else {
@@ -81,10 +82,10 @@ public class ScimService {
         });
     }
 
-    public Boolean createSecondServerUser(AccountRequestV2 accountRequestV2, String idpId) throws Exception {
-        log.info("Calling second server for user: {}, {}", accountRequestV2.getUserName(), idpId);
+    public Boolean createSecondServerUser(ScimAccountRequest scimAccountRequest, String idpId) throws Exception {
+        log.info("Calling second server for user: {}, {}", scimAccountRequest.getFirstName() + " " + scimAccountRequest.getLastName(), idpId);
         HttpPost post = new HttpPost(secondServerUrl + "/partner/internal/scim/" + idpId + "/accounts");
-        post.setEntity(new StringEntity(objectMapper.writeValueAsString(accountRequestV2), ContentType.APPLICATION_JSON));
+        post.setEntity(new StringEntity(objectMapper.writeValueAsString(scimAccountRequest), ContentType.APPLICATION_JSON));
         return secondServerClient.execute(post, response -> {
             try {
                 return handleUserResponse(response);
